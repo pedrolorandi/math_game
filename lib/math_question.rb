@@ -15,23 +15,24 @@ class MathQuestion
     "Not even close!"
   ].freeze
 
-  def initialize(player)
-    @player = player
+  def initialize(player_name)
+    @player_name = player_name
+    @number_range = 1..20
   end
 
   def ask_question
-    number_1 = rand(1..20)
-    number_2 = rand(1..20)
-    answer = number_1 + number_2
+    @number_1, @number_2 = @number_range.to_a.sample(2)
+    @answer = @number_1 + @number_2
 
-    puts "#{@player}: What does #{number_1} plus #{number_2} equal?"
+    puts "#{@player_name}: What does #{@number_1} plus #{@number_2} equal?"
+    print "> "
     user_answer = gets.chomp.to_i
 
-    if answer == user_answer
-      puts CORRECT_PHRASES.sample
+    if @answer == user_answer
+      puts "#{@player_name}: #{CORRECT_PHRASES.sample}"
       true
     else
-      puts WRONG_PHRASES.sample
+      puts "#{@player_name}: #{WRONG_PHRASES.sample}"
       false
     end
   end

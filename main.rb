@@ -1,12 +1,6 @@
-require './lib/game.rb'
-require './lib/math_question.rb'
 require './lib/player.rb'
-require './lib/scoreboard.rb'
+require './lib/math_question.rb'
+require './lib/game.rb'
 
-question = MathQuestion.new("Player 1")
-
-if question.ask_question
-  puts "Safe"
-else
-  puts "-1"
-end
+game = Game.new("Player 1", "Player 2")
+game.start
